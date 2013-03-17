@@ -1,0 +1,42 @@
+<?php  
+    session_start(); 
+?>
+<p> Numero de productos encontrados en la seccion: <?php echo $_POST['num_productos'];?> </p>
+
+<form method="post" action="<?php $PHP_SELF."?".SID ?>">
+	<table style="text-align:center; border-color:#000; border-style:outset; border-width:1px;" cellpadding="10px">
+    	<tr style="background-color:#096">
+        	<td style="width:150px">Descripcion</td><td>Precio</td><td style="width:80px">Cantidad</td><td style="width:60px">Parcial</td><td>Incluir</td>
+        </tr>
+
+		<?php
+            for ($i=1; $i<=$_POST['num_productos']; $i++) {
+            	if (!isset($_SESSION[$_POST[$i]["codbarras"]])) $_SESSION[$_POST[$i]["codbarras"]]=0;
+			        $value[$i]=$_SESSION[$_POST[$i]["codbarras"]];
+					$cantidad[$i]="cantidad".$i;
+                    $enviar[$i] = "enviar".$i; 
+        ?>
+        
+        <tr>
+        	<td> <?php echo $_POST[$i][descripcion]; ?></td>
+			<td> <?php echo number_format($_POST[$i][pvp],2); ?> €</td>
+            <td> <input type="text" size="2" name="<?php echo $cantidad[$i]; ?>" value="<?php print htmlentities($value[$i]) ?>" /> </td>
+            <td> <?php echo $_SESSION[$_POST[$i]["codbarras"]]*$_POST[$i]["pvp"]; ?> €</td>
+            <td> <input type="image" src="../img/carrito.png" /> </td>
+			<input type="hidden" name="<?php echo $enviar[$i];?>" value="enviar" />   
+            <?php  if ($_POST[$enviar[$i]]=="enviar") {
+                     $patron="[0-9]{1,2}";
+                     if (ereg($patron,(string)$_POST[$cantidad[$i]],$resultado))
+                         $_SESSION[$_POST[$i]["codbarras"]]=$resultado[0];
+                         if ($resultado[0]!=0){
+                            $_SESSION["prod"][$_POST[$i]["codbarras"]][0]=$_POST[$i]["descripcion"];
+                            $_SESSION["prod"][$_POST[$i]["codbarras"]][1]=$_POST[$i]["pvp"];
+                         }
+                     echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=$PHP_SELF'>";
+                   }
+            ?>
+        </tr>
+		<?php } ?>
+    
+    </table>
+</form> 

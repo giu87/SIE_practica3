@@ -1,0 +1,19 @@
+<?php  
+    session_start(); 
+?>
+
+<h2>Hola <?php echo $_SESSION['nombre_cliente']; ?></h2>
+
+
+<p> Ultimas facturas: <?php echo $_POST['num_facturas']; ?> </p>
+
+
+<table>
+	<?php for($i=1;$i<=$_POST['num_facturas'];$i++){ ?>
+        	<tr>
+            	<td><?php echo $_POST[$i]['fecha']; ?></td>
+            </tr>
+        <?php }
+    ?>
+
+</table>

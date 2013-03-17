@@ -1,0 +1,175 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-image:url(../img/sfondo.jpg);
+	font-family:Arial, Helvetica, sans-serif;	
+	font-size:12px;
+}
+
+a{
+	text-decoration:none;
+	color:#393;
+}
+
+a:hover{	
+	text-decoration:underline;
+}
+
+ul {
+	list-style-type:none;	
+	padding:0px;
+}
+
+#contenitor{
+	margin-left:auto;
+	margin-right:auto;
+	width:900px;
+}
+
+#banner{
+	margin-top:-30px;
+	padding-bottom:5em;
+}
+
+#logo{
+	position:relative;
+	top:50px;	
+	left:33px;
+}
+
+#navigation {
+	position:relative;
+	float:left;
+	width:100%;
+}
+
+#navigation ul, #navigation ul li {  
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+#navigation ul {
+	position:relative;
+	left:59%;
+	clear:left;
+	float:left;
+	margin:0;
+	
+	font-size:16px;
+}
+
+#navigation ul li {
+	position:relative;
+	right:50%;
+	display:block;
+	float:left;	
+}
+
+#navigation ul li a {
+	display:block;
+   	margin:0 0.25em;
+   	padding:0.5em 1em;
+	color:#FFF;
+}
+
+#navigation ul li a:hover {
+	color:#393;
+	background:#FFFFFF;
+	text-decoration:none;
+	
+}
+
+#navigation ul li a.active,
+#navigation ul li a.active:hover {
+	color:#FFFFFF;
+	background:#BCBCBC; 
+}
+
+#contents {
+   background-color:#FFF;
+   padding-left:2em;
+   position:relative;
+   height:725px;
+}
+
+b.rtop, b.rbottom{display: block; background: #FFF}
+b.rtop b, b.rbottom b{display: block; height: 1px;
+    overflow: hidden; background: #FFF}
+b.r1{margin: 0 5px}
+b.r2{margin: 0 3px}
+b.r3{margin: 0 2px}
+b.rtop b.r4, b.rbottom b.r4{margin: 0 1px; height: 2px} 
+
+#title{
+	position:relative;
+	top:-20px;	
+}
+
+#menu_left {
+	padding-top:35px;
+	width:165px;
+	margin:0;
+}
+
+#menu_left ul{
+	list-style-type: none;
+	list-style-image:url(../img/foglia_menu.jpg);	
+	list-style-position:outside;
+}
+
+#menu_left ul li{
+	margin-bottom:1px;
+	padding-left:5px;
+}
+
+#menu_left ul li a{
+	display:block;
+   	margin-bottom:1px;
+	height:25px;
+	width:145px;
+	font-weight:bold;
+}
+
+#login {
+	position:absolute;
+	right:35px;
+	top:-18px;
+	width:200px;
+	text-align:right;
+}
+
+#login div:first-child{
+	margin-bottom:7px;
+}
+
+#content{
+	position:relative;
+	top:-193px;
+	margin-left:170px;
+	width:670px;
+}
+
+#content ul{
+	list-style-type:disc;		
+	padding-left:20px;
+}
+
+#footer{
+	padding-top:10px;
+	padding-left:33px;
+	color:#FFF;
+	position:relative;
+}
+
+#connection{
+	position:absolute;
+	right:30px;
+	top:10px;
+	text-align:center;
+}
+
+#connection div{
+	margin-bottom:5px;	
+}

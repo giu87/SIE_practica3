@@ -1,0 +1,94 @@
+<?php
+	include("logica_presentacion/inicio.php");
+	$path="/SIE_practica3/";
+    $path2 ="/wamp/www/SIE_practica3/";
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Sapone Natural - Home</title>
+
+<link href="<?php echo $path; ?>css/default.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="contenitor">
+	<div id="banner">
+		<span id="logo">
+	       	<img src="<?php echo $path; ?>img/logo.png" />
+        </span>
+        <span id="navigation">
+            <ul>
+                <li><a href="<?php echo $path; ?>" title="home">HOME</a></li>
+                <li><a href="#" title="chi siamo">SOBRE NOSOTROS</a></li>
+                <li><a href="#" title="articoli">ARTICULOS</a></li>
+                <li><a href="#" title="dove siamo">DONDE ESTAMOS</a></li>
+                <li class="last"><a href="#" title="contatti">CONTACTO</a></li>
+              </ul>
+		</span>
+    </div>
+   	<img src="<?php echo $path; ?>img/top.png"/>
+    <div id="contents">
+        
+        <div id="login">
+        	<?php if(isset($_SESSION['dni_cliente'])) { ?>
+            	<strong> <a href="<?php echo $path.'logica_presentacion/compras_cliente.php'; ?>"> <?php echo $_SESSION['nombre_cliente']; ?> </a></strong> <br />
+                    <a href="<?php echo $path.'logica_presentacion/salir.php'; ?>"> Salir </a>
+            <?php } 
+            		else { ?> 
+					<div><a href="<?php echo $path.'logica_presentacion/login.php'; ?>">Login</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $path.'logica_presentacion/registracion.php'; ?>">Registracion</a></div>
+                    <?php } ?>
+                    
+               	<div><a href="<?php echo $path.'logica_presentacion/carrito.php'; ?>"><img src="<?php echo $path; ?>img/carrito.png"/></a></div>
+		</div>
+        <div id="menu_left">
+        	<ul>
+            
+            <?php
+				// categorias de productos
+				session_start();
+				for ($i=1; $i<=$_POST['num_familias']; $i++){
+                	 $valor=$_POST["familia"][$i]["descripcion"];
+                ?>
+                <li><a href="<?php echo $path; ?>logica_presentacion/familia_productos.php?categoria=<?php echo $valor; ?>"><?php echo $valor; ?> </a></li>
+				<?php } ?>
+            </ul>
+        </div>
+        
+        <div id="content">
+			<?php 
+				$nombre=$_POST['accion']; 
+				if ($nombre=="principal")include($path2."interfaz/principal.html");
+				else{
+                	if ($nombre=="carrito")include($path2."interfaz/carrito.htm");
+					else {
+                    	if ($nombre=="registracion") include($path2."interfaz/registracion.htm");
+                		else {
+                        	if ($nombre=="login") include($path2."interfaz/login.htm");
+							else {
+                            	if ($nombre=="compras_cliente") include($path2."interfaz/compras_cliente.htm");
+								else   	include($path2."interfaz/productos.htm");
+                            }
+                        }
+                    }
+                }
+			?> 
+        </div>
+
+    </div>
+    <img src="<?php echo $path; ?>img/bottom.png"/>
+    <div id="footer">
+    	Sapone Natural s.r.l. P.IVA 873482783718741 <br />
+        info@saponenatural.es
+        <div id="connection">
+        	<div>conneccion</div>
+            <div>
+            <a href="#"><img src="<?php echo $path; ?>img/facebook.png" width="80px" height="25px"/></a>
+            <a href="#"><img src="<?php echo $path; ?>img/twitter.jpg" width="80px" height="25px"/></a>
+            </div>
+        </div>
+    </div>	
+</div>
+</body>
+</html>
